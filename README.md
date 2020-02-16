@@ -6,8 +6,7 @@ Ansible playbook:
 Проверка ОС установлена на хостовой машине Debian подобная или CentOS подобная 
 Так же база postgres устанавливается локально.
 
-playbook.yml
-
+```yaml
 ---
 
 - hosts: db
@@ -20,3 +19,4 @@ playbook.yml
     - pip
     - docker
     - postgres_docker
+```
