@@ -1,0 +1,12 @@
+---
+
+- hosts: db
+  become: true
+  vars:
+    pip_install_packages:
+      - name: docker
+  roles:
+    - nginx
+    - pip
+    - docker
+    - postgres_docker
