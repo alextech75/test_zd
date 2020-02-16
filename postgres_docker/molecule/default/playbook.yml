@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  vars:
+    postgres_docker_exposed_ports:
+      - 5455:5432
+  roles:
+    - role: postgres_docker

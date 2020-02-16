@@ -1,0 +1,10 @@
+---
+
+postgres_docker_tag: 9.6.11-alpine
+postgres_docker_network: []
+postgres_docker_exposed_ports:
+  - 5432:5432
+postgres_docker_data_dir: /etc/postgres
+postgres_docker_user: postgres
+postgres_docker_password: mysecretpassword
+postgres_docker_database: mydb

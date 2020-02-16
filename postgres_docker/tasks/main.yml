@@ -1,0 +1,21 @@
+---
+
+- name: Create Postgres data directory
+  file:
+    path: "{{ postgres_docker_data_dir }}"
+    state: directory
+
+- name: Create Postgres container
+  docker_container:
+    name: postgres
+    image: "postgres:{{ postgres_docker_tag }}"
+    state: started
+    restart_policy: unless-stopped
+    networks: "{{ omit if not postgres_docker_network else postgres_docker_network }}"
+    published_ports: "{{ omit if not postgres_docker_exposed_ports else postgres_docker_exposed_ports }}"
+    volumes:
+      - "{{ postgres_docker_data_dir }}:/var/lib/postgresql/data"
+    env:
+      POSTGRES_USER: "{{ postgres_docker_user }}"
+      POSTGRES_PASSWORD: "{{ postgres_docker_password }}"
+      POSTGRES_DB: "{{ postgres_docker_database }}"
